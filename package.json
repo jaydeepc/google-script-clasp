@@ -1,0 +1,17 @@
+{
+  "name": "google-script-clasps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaydeep Chakrabarty",
+  "license": "ISC",
+  "dependencies": {  
+  },
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.55",
+    "@google/clasp": "^2.4.1"
+  }
+}
