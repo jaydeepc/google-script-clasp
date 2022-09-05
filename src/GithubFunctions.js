@@ -1,5 +1,5 @@
 
-var TOKEN = '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';
+var TOKEN = '<GitHUB_TOKEN>'
 
 var headers = {
     "Authorization": "Bearer " + TOKEN,
@@ -128,3 +128,23 @@ function fetchCommitCount(user, duration) {
     return response;
 }
 
+// function to find when the last commit to github was done by a user and convert into number of days
+function fetchLastCommitDateInDayfromCurrentDay(user) {
+    var api = 'https://api.github.com/search/commits?q=author:' + user + '+sort:committer-date-desc';
+    var response = UrlFetchApp.fetch(api, options);
+    response = JSON.parse(response.getContentText());
+    
+  var lastCommitDate = response.items[0].commit.author.date;
+  var lastCommitDate = new Date(lastCommitDate);
+  
+  // convert lastCommitDate to number of days from current date
+  var currentDate = new Date();
+  var diff = currentDate - lastCommitDate;
+  var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+  
+  return diffDays;
+
+
+
+    
+}

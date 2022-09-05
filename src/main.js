@@ -6,8 +6,6 @@ function onOpen() {
         .addToUi();
 }
 
-
-
 function loadData() {
     var mainDataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("GithubDataBase");
     var usernames = getUsernames();
@@ -15,7 +13,7 @@ function loadData() {
     var headers = ['Date','Username', 'Name', 'Public Repos', 'Open Issues', 'Closed Issues',
         'Open MRs', 'Closed MRs', 'Total commits', 'Followers',
         'Language Used', 'Total languages', 'Most frequently used languages', 'Avatar URL', 'Profile Bio',
-        'Weekly Commits', 'Monthly Commits', 'Yearly Commits', 'Fork Count', 'Active Repo Count'];
+        'Weekly Commits', 'Monthly Commits', 'Yearly Commits', 'Fork Count', 'Active Repo Count', 'Day Since Last Commit'];
         
     
     // create the header row
@@ -63,10 +61,11 @@ function getData(usernames) {
         var yearlyCommits = fetchCommitCount(user, 'year').total_count;
         var forkCount = allRepoDetails[1];
         var activeRepoCount = allRepoDetails[2];
-
+        var lastCommitDay = fetchLastCommitDateInDayfromCurrentDay(user);
+        
         data.push([currentDate, user, name, publicRepos, openIssues, closedIssues, openMRs, closedMRs,
             reposPushed, followers, uniqueLanguagesText, languagesCount, languageUsedTheMost, avatar, bio,
-            weeklyCommits, monthlyCommits, yearlyCommits, forkCount, activeRepoCount]);
+            weeklyCommits, monthlyCommits, yearlyCommits, forkCount, activeRepoCount, lastCommitDay]);
             
     }
     return data;
