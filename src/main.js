@@ -61,11 +61,11 @@ function getData(usernames) {
         var yearlyCommits = fetchCommitCount(user, 'year').total_count;
         var forkCount = allRepoDetails[1];
         var activeRepoCount = allRepoDetails[2];
-        var lastCommitDay = fetchLastCommitDateInDayfromCurrentDay(user);
+        var daySinceLastCommit = fetchLastCommitDateInDayfromCurrentDay(user);
         
         data.push([currentDate, user, name, publicRepos, openIssues, closedIssues, openMRs, closedMRs,
             reposPushed, followers, uniqueLanguagesText, languagesCount, languageUsedTheMost, avatar, bio,
-            weeklyCommits, monthlyCommits, yearlyCommits, forkCount, activeRepoCount, lastCommitDay]);
+            weeklyCommits, monthlyCommits, yearlyCommits, forkCount, activeRepoCount, daySinceLastCommit]);
             
     }
     return data;
